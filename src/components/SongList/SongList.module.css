@@ -1,0 +1,118 @@
+.Container {
+    width: 432px;
+    height: 356px;
+    position: absolute;
+    top: 40px;
+    left: 280px;
+    gap: 0px;
+    opacity: 0px;
+
+  }
+  .header{
+    display: flex;
+    gap: 2rem;
+  }
+ 
+  .search {
+    width: Fixed (400px)px;
+height: Hug (48px)px; 
+padding: 8px;
+gap: 0px;
+border-radius: 8px 0px 0px 0px;
+justify-content: space-between;
+opacity: 0px;
+
+  }
+  
+  .search input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+    color: #fff;
+    background-color: #3c3737;
+  }
+  
+  .search input::placeholder {
+    color: #ccc;
+  }
+  
+  .searchIcon {
+    cursor: pointer;
+    margin-left: -40px;
+    border-radius: 8px;
+    opacity: 0.7;
+  }
+.songListContainer{
+    width: 432px;
+    height: 550px;
+    top: 176px;
+    left: 280px;
+    gap: 0px;
+    opacity: 0px;
+    overflow-y: scroll;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+.songCont {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background-color: transparent;
+    border-radius: 1rem;
+    position: relative;
+  }
+.songCont:hover {
+    background-color: #3c3737;
+  }
+  
+  .img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .textContainer {  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-transform: capitalize;
+  }
+  
+  .textContainer h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #fff;
+    font-family: Inter;
+font-size: 18px;
+font-weight: 400;
+text-align: left;
+
+  }
+  .textContainer h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #fff;
+    font-family: Inter;
+font-size: 18px;
+font-weight: 400;
+line-height: 24px;
+text-align: left;
+
+  }
+  
+  .duration p{
+    position: absolute;
+    top: 0.9rem;
+    right: 0.9rem;
+    font-family: Inter;
+font-size: 18px;
+font-weight: 400;
+line-height: 24px;
+text-align: right;
+
+  }

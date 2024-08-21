@@ -1,0 +1,123 @@
+.playerContainer {
+ width: 480px;
+/* height: 692.24px; */
+position: absolute;
+top: 101px;
+left: 874px;
+gap: 32px;
+opacity: 0px;
+ color: #fff;
+ padding: 20px;
+ border-radius: 10px;
+  }
+  .icns{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .albumArtContainer {
+    width: 400px;
+    margin-bottom: 20px;
+  }
+  .albumArtContainer img{
+    width: 380px;
+   height: 380px;
+   gap: 0px;
+   border-radius: 8px 0px 0px 0px;
+   opacity: 0px;
+
+  }
+  
+  .albumArt {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .songDetails {
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  
+  .songTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .songArtist {
+    font-size: 1rem;
+    color: #b3b3b3;
+  }
+  
+  .seekerContainer {
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    
+  }
+  
+  .seeker {
+    width: 100%;
+    cursor: pointer;
+    appearance: none;
+    background-color: rgb(53, 60, 60);
+    border-radius: 5px;
+    height: 5px;
+    outline: none;
+    position: relative;
+  }
+  
+  .seeker::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #fff;;
+    background: white;
+    border-radius: 5px;
+    z-index: 1;
+  }
+  
+  .seeker::-webkit-slider-thumb {
+    appearance: none;
+    width: 0;
+    height: 0; 
+    background: transparent; 
+  }
+  
+  .seeker::-moz-range-thumb {
+    width: 0;
+    height: 0;
+    background: transparent;
+  }
+  
+  .timeInfo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #b3b3b3;
+  }
+  
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+    width: 380px;
+  }
+  
+  .controlIcon {
+    font-size: 1.5rem;
+    gap: 1rem;
+    cursor: pointer;
+    color: #1db954;
+  }
+  
+  .controlIcon:hover {
+    color: #1ed760;
+  }
