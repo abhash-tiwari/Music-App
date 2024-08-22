@@ -8,7 +8,7 @@ import play from '../../assets/Vector (2).png';
 import pause from '../../assets/Frame 32.png';
 import next from '../../assets/Vector (7).png';
 
-const MusicPlayer = ({ currentSong }) => {
+const MusicPlayer = ({ currentSong, appContainerRef }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -44,10 +44,12 @@ const MusicPlayer = ({ currentSong }) => {
       img.onload = () => {
         const color = fac.getColor(img);
         setBackgroundColor(color.hex);
-        document.body.style.background = `linear-gradient(135deg, ${color.hex}, #000)`;
+        if (appContainerRef.current) {
+          appContainerRef.current.style.background = `linear-gradient(135deg, ${color.hex}, #000)`;
+        }
       };
     }
-  }, [currentSong]);
+  }, [currentSong, appContainerRef]);
 
   const handlePlayPause = () => {
     if (isPlaying) {

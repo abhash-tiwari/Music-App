@@ -121,3 +121,46 @@ opacity: 0px;
   .controlIcon:hover {
     color: #1ed760;
   }
+
+
+  @media (max-width: 768px) {
+    .playerContainer {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: static;
+    }
+  
+    .songDetails, .albumArtContainer, .controls {
+      width: 100%;
+      text-align: left;
+    }
+  
+    .seekerContainer {
+      width: 50%;
+      margin: 0;
+    }
+
+    .controls{
+      width: 50%;
+      margin: 0;
+    }
+  
+    .songList {
+      display: none;
+    }
+  
+    .menuButton {
+      display: block;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+    }
+  }

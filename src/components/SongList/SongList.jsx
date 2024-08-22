@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styles from './SongList.module.css';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaBars } from 'react-icons/fa';
 
 const SongList = ({ songs, setCurrentSong }) => {
   const [durations, setDurations] = useState({});
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredSongs, setFilteredSongs] = useState(songs);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const getSongDuration = (url, id) => {
     const audio = new Audio(url);
@@ -27,43 +28,35 @@ const SongList = ({ songs, setCurrentSong }) => {
   }, [songs, durations]);
 
   useEffect(() => {
+    const lowerCaseQuery = searchQuery.toLowerCase();
     setFilteredSongs(
       songs.filter((song) =>
-        song.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        song.artist.toLowerCase().includes(searchQuery.toLowerCase())
+        song.name.toLowerCase().includes(lowerCaseQuery) ||
+        song.artist.toLowerCase().includes(lowerCaseQuery)
       )
     );
   }, [searchQuery, songs]);
 
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const handleSearchClick = () => {
-    setFilteredSongs(
-      songs.filter((song) =>
-        song.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        song.artist.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    );
-  };
-
   return (
-    <div className={styles.Container}>
-      <div>
+    <div className={`${styles.Container} ${isMenuOpen ? styles.menuOpen : ''}`}>
+      <div className={styles.headerContainer}>
         <h2 className={styles.header}>
           <span>For You</span>
-          <span style={{ opacity: "0.6" }}>Top Tracks</span>
+          <span style={{ opacity: '0.6' }}>Top Tracks</span>
         </h2>
+        <FaBars
+          className={styles.hamburgerIcon}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        />
       </div>
       <div className={styles.search}>
         <input
           type="text"
           placeholder="Search Song, Artist"
           value={searchQuery}
-          onChange={handleSearchChange}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <FaSearch className={styles.searchIcon} onClick={handleSearchClick} />
+        <FaSearch className={styles.searchIcon} />
       </div>
       <div className={styles.songListContainer}>
         {filteredSongs.map((song) => (
@@ -75,7 +68,7 @@ const SongList = ({ songs, setCurrentSong }) => {
             <div className={styles.songCont}>
               <img
                 src={`https://cms.samespace.com/assets/${song.cover}`}
-                alt=""
+                alt={song.name}
                 className={styles.img}
               />
               <div className={styles.textContainer}>
@@ -83,9 +76,7 @@ const SongList = ({ songs, setCurrentSong }) => {
                 <p>{song.artist}</p>
               </div>
               <div className={styles.duration}>
-                <p>
-                  {durations[song.id]}
-                </p>
+                <p>{durations[song.id]}</p>
               </div>
             </div>
           </div>

@@ -55,6 +55,7 @@ opacity: 0px;
     overflow-y: scroll;
     -ms-overflow-style: none; 
     scrollbar-width: none; 
+    display: block;
 }
 .songCont {
     display: flex;
@@ -116,3 +117,45 @@ line-height: 24px;
 text-align: right;
 
   }
+
+  .hamburgerIcon{
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    .Container {
+        width: 100%;
+        height: 100%;
+        position: static;
+    }
+
+    .search {
+        display: none;
+    }
+
+    .songListContainer {
+        display: none;
+    }
+
+    .hamburgerIcon {
+        display: block; 
+    }
+
+    .menuOpen .songListContainer {
+        display: block;
+        position: absolute;
+        left: 400px;
+        z-index: 2;
+        width: 30%;
+    }
+
+    .menuOpen .img{
+        display: none;
+    }
+    .menuOpen .img{
+        display: none;
+    }
+}

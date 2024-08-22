@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import Navbar from './components/Navbar/Navbar';
 import SongList from './components/SongList/SongList';
@@ -8,6 +8,7 @@ import styles from './App.module.css';
 function App() {
   const [songs, setSongs] = useState([]);
   const [currentSong, setCurrentSong] = useState(null);
+  const appContainerRef = useRef(null);
 
   useEffect(() => {
     axios.get('https://cms.samespace.com/items/songs')
@@ -16,10 +17,10 @@ function App() {
   }, []);
 
   return (
-    <div className={styles.appContainer}>
+    <div className={styles.appContainer} ref={appContainerRef}>
       <Navbar />
         <SongList songs={songs} setCurrentSong={setCurrentSong} />
-        <MusicPlayer currentSong={currentSong} />
+        <MusicPlayer currentSong={currentSong} appContainerRef={appContainerRef} />
       
     </div>
   );
