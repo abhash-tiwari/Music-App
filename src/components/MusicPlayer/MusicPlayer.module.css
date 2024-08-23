@@ -5,7 +5,6 @@ position: relative;
 top: -399px;
 left: 874px;
 gap: 32px;
-opacity: 0px;
  color: #fff;
  padding: 20px;
  border-radius: 10px;
@@ -24,8 +23,7 @@ opacity: 0px;
     width: 380px;
    height: 380px;
    gap: 0px;
-   border-radius: 8px 0px 0px 0px;
-   opacity: 0px;
+   border-radius: 8px;
 
   }
   
