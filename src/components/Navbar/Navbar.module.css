@@ -11,10 +11,10 @@
   }
   
   .navImg {
-    position: absolute;
+  position: relative;
     width: 75px;
    height: 48px;
-   top: 630px;
+   top: 580px;
    border-radius: 50%;
    left: 32px;
    gap: 0px;
@@ -29,4 +29,14 @@
     .navImg{
         display: none;
     }
+}
+
+@media screen and (min-width:768px) and (max-width:1024px){
+  .navbarContainer{
+    display: flex;
+    flex-direction: column;
+}
+.navImg{
+    display: none;
+}
 }

@@ -1,8 +1,8 @@
 .playerContainer {
  width: 480px;
-/* height: 692.24px; */
-position: absolute;
-top: 101px;
+height: 692.24px;
+position: relative;
+top: -399px;
 left: 874px;
 gap: 32px;
 opacity: 0px;
@@ -61,7 +61,8 @@ opacity: 0px;
   .seeker {
     width: 100%;
     cursor: pointer;
-    appearance: none;
+    /* appearance: none; */
+    accent-color: white;
     background-color: rgb(53, 60, 60);
     border-radius: 5px;
     height: 5px;
@@ -69,7 +70,7 @@ opacity: 0px;
     position: relative;
   }
   
-  .seeker::before {
+  /* .seeker::before {
     content: '';
     position: absolute;
     top: 0;
@@ -79,7 +80,7 @@ opacity: 0px;
     background: white;
     border-radius: 5px;
     z-index: 1;
-  }
+  } */
   
   .seeker::-webkit-slider-thumb {
     appearance: none;
@@ -115,15 +116,56 @@ opacity: 0px;
     font-size: 1.5rem;
     gap: 1rem;
     cursor: pointer;
-    color: #1db954;
-  }
-  
-  .controlIcon:hover {
-    color: #1ed760;
   }
 
 
   @media (max-width: 768px) {
+    .playerContainer {
+      width: 100%;
+      height: auto;
+      /* display: flex;
+      flex-direction: column;
+      justify-content: space-between; */
+      position: static;
+      margin-left: 2rem;
+    }
+  
+    .songDetails, .albumArtContainer, .controls {
+      width: 100%;
+      text-align: left;
+    }
+  
+    .seekerContainer {
+      width: 250px;
+    }
+
+    .controls{
+      width: 250px;
+      margin: 0;
+    }
+  
+    .songList {
+      display: none;
+    }
+    .albumArtContainer img{
+      width: 250px;
+      height: 250px;
+    }
+  
+    .menuButton {
+      display: block;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+    }
+  }
+
+  @media screen and (min-width:768px) and (max-width:1024px){
     .playerContainer {
       width: 100%;
       height: 100vh;
@@ -131,6 +173,7 @@ opacity: 0px;
       flex-direction: column;
       justify-content: space-between;
       position: static;
+      margin-left: 2rem;
     }
   
     .songDetails, .albumArtContainer, .controls {

@@ -1,11 +1,10 @@
 .appContainer {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    min-width: 100vw;
+    height: 100vh;
+    width: 100vw;
     overflow: hidden;
     color: white;
-    /* min-height: 100vh; */
     background: #000; 
     transition: background 0.5s ease;
   }
@@ -25,6 +24,7 @@
   @media (max-width: 768px) {
     .contentContainer {
       flex-direction: column;
+      gap: 2rem;
     }
   }
   

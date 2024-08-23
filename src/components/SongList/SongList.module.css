@@ -1,8 +1,8 @@
 .Container {
     width: 432px;
     height: 356px;
-    position: absolute;
-    top: 40px;
+    position: relative;
+    top: -53px;;
     left: 280px;
     gap: 0px;
     opacity: 0px;
@@ -15,8 +15,8 @@
  
   .search {
     width: Fixed (400px)px;
-height: Hug (48px)px; 
-padding: 8px;
+   height: Hug (48px)px; 
+  padding: 8px;
 gap: 0px;
 border-radius: 8px 0px 0px 0px;
 justify-content: space-between;
@@ -48,8 +48,6 @@ opacity: 0px;
 .songListContainer{
     width: 432px;
     height: 550px;
-    top: 176px;
-    left: 280px;
     gap: 0px;
     opacity: 0px;
     overflow-y: scroll;
@@ -130,6 +128,7 @@ text-align: right;
         width: 100%;
         height: 100%;
         position: static;
+        margin-left: 2rem;
     }
 
     .search {
@@ -147,9 +146,10 @@ text-align: right;
     .menuOpen .songListContainer {
         display: block;
         position: absolute;
-        left: 400px;
+        left: 0px;
         z-index: 2;
-        width: 30%;
+        width: 50%;
+        height: 100px;
     }
 
     .menuOpen .img{
@@ -158,4 +158,77 @@ text-align: right;
     .menuOpen .img{
         display: none;
     }
+}
+
+@media (min-width: 820px) and (max-width:1180px) {
+  .Container {
+    width: 100%;
+    height: 100%;
+    position: static;
+    margin-left: 2rem;
+}
+
+.search {
+    display: none;
+}
+
+.songListContainer {
+    display: none;
+}
+
+.hamburgerIcon {
+    display: block; 
+}
+
+.menuOpen .songListContainer {
+    display: block;
+    position: absolute;
+    left: 0px;
+    z-index: 2;
+    width: 50%;
+    height: 300px;
+}
+
+.menuOpen .img{
+    display: none;
+}
+.menuOpen .img{
+    display: none;
+}
+}
+@media (min-width: 768px) and (max-width:1180px) {
+  .Container {
+    width: 100%;
+    height: 100%;
+    position: static;
+    margin-left: 2rem;
+}
+
+.search {
+    display: none;
+}
+
+.songListContainer {
+    display: none;
+}
+
+.hamburgerIcon {
+    display: block; 
+}
+
+.menuOpen .songListContainer {
+    display: block;
+    position: absolute;
+    left: 0px;
+    z-index: 2;
+    width: 50%;
+    height: 300px;
+}
+
+.menuOpen .img{
+    display: none;
+}
+.menuOpen .img{
+    display: none;
+}
 }
