@@ -44,14 +44,14 @@ const SongList = ({ songs, setCurrentSong }) => {
     <div className={`${styles.Container} ${isMenuOpen ? styles.menuOpen : ''}`}>
       <div className={styles.headerContainer}>
         <h2 className={styles.header}>
-          <span 
-            onClick={() => setIsTopTracksView(false)} 
+          <span
+            onClick={() => setIsTopTracksView(false)}
             style={{ cursor: 'pointer', opacity: isTopTracksView ? '0.6' : '1' }}
           >
             For You
           </span>
-          <span 
-            onClick={() => setIsTopTracksView(true)} 
+          <span
+            onClick={() => setIsTopTracksView(true)}
             style={{ cursor: 'pointer', opacity: isTopTracksView ? '1' : '0.6' }}
           >
             Top Tracks

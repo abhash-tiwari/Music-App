@@ -1,14 +1,14 @@
 .playerContainer {
- width: 480px;
-height: 692.24px;
-position: relative;
-top: -399px;
-left: 874px;
-gap: 32px;
- color: #fff;
- padding: 20px;
- border-radius: 10px;
-  }
+  width: 480px;
+  height: 692.24px;
+  position: relative;
+  top: -399px;
+  left: 874px;
+  gap: 32px;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
   .icns{
     display: flex;
     align-items: center;
@@ -120,20 +120,6 @@ gap: 32px;
 
   
 
-  @media (max-width: 1180px) {
-    .playerContainer {
-      width: 400px;
-      right: 10px;
-      z-index: 101;
-    }
-  
-    .albumArtContainer, .seekerContainer, .controls {
-      width: 100%;
-    }
-  
-    
-  }
-  
   @media (max-width: 1024px) {
     .playerContainer {
       width: 100%;
@@ -167,5 +153,73 @@ gap: 32px;
   
     .seekerContainer, .controls {
       max-width: 300px;
+    }
+  
+    .compactPlayer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background: #000;
+      color: #fff;
+    }
+  
+    .compactInfo {
+      flex-grow: 1;
+    }
+  
+    .compactControls {
+      display: flex;
+      gap: 10px;
+    }
+  
+    .compactControls img {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+  
+    .expanded {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #000;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+  
+    .closeButton {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  
+    .expanded .albumArtContainer {
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 20px;
+    }
+    .expanded .albumArtContainer img {
+      display: block;
+      width: 300px;
+      height: 300px;
+      margin-bottom: 20px;
+    }
+  
+    .expanded .albumArt {
+      width: 100%;
+      height: auto;
     }
   }

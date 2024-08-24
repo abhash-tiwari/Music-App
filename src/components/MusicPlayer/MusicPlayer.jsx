@@ -14,11 +14,22 @@ const MusicPlayer = ({ currentSong, appContainerRef, onNext, onPrevious }) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [backgroundColor, setBackgroundColor] = useState('');
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const audioRef = useRef(null);
   const fac = new FastAverageColor();
 
   useEffect(() => {
-    if (audioRef.current) {
+    const checkScreenSize = () => {
+      setIsSmallScreen(window.innerWidth <= 768);
+    };
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+  useEffect(() => {
+    if (currentSong && audioRef.current) {
       const handleTimeUpdate = () => {
         setCurrentTime(audioRef.current.currentTime);
       };
@@ -51,35 +62,40 @@ const MusicPlayer = ({ currentSong, appContainerRef, onNext, onPrevious }) => {
     }
   }, [currentSong, appContainerRef]);
 
-  const handlePlayPause = () => {
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
+  useEffect(() => {
+    if (currentSong && audioRef.current) {
+      audioRef.current.play().catch(error => {
+        console.error('Error playing the audio:', error);
+      });
+      setIsPlaying(true);
     }
-    setIsPlaying(!isPlaying);
+  }, [currentSong]);
+
+  const handlePlayPause = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play().catch(error => {
+          console.error('Error playing the audio:', error);
+        });
+      }
+      setIsPlaying(!isPlaying);
+    }
   };
 
   const handleMute = () => {
-    audioRef.current.muted = !isMuted;
-    setIsMuted(!isMuted);
+    if (audioRef.current) {
+      audioRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
   };
 
   const handleSeek = (e) => {
     const seekTime = e.target.value;
-    audioRef.current.currentTime = seekTime;
-    setCurrentTime(seekTime);
-  };
-
-  const handleNext = () => {
-    if (onNext) {
-      onNext();
-    }
-  };
-
-  const handlePrevious = () => {
-    if (onPrevious) {
-      onPrevious();
+    if (audioRef.current) {
+      audioRef.current.currentTime = seekTime;
+      setCurrentTime(seekTime);
     }
   };
 
@@ -89,59 +105,102 @@ const MusicPlayer = ({ currentSong, appContainerRef, onNext, onPrevious }) => {
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
   };
 
-  return (
-    <div className={styles.playerContainer}>
-      {currentSong ? (
-        <>
-          <div className={styles.songDetails}>
-            <div className={styles.songTitle}>{currentSong.name}</div>
-            <div className={styles.songArtist}>{currentSong.artist}</div>
-          </div>
-          <div className={styles.albumArtContainer}>
-            <img src={`https://cms.samespace.com/assets/${currentSong.cover}`} alt={currentSong.name} className={styles.albumArt} />
-          </div>
+  const handleCompactClick = (e) => {
+    e.stopPropagation();
+    setIsExpanded(true);
+  };
 
-          <div className={styles.seekerContainer}>
-            <input
-              type="range"
-              min="0"
-              max={duration}
-              value={currentTime}
-              onChange={handleSeek}
-              className={styles.seeker}
+  const handleControlClick = (e, action) => {
+    e.stopPropagation();
+    action();
+  };
+
+  const renderPlayerContent = () => (
+    <>
+      <div className={styles.songDetails}>
+        <div className={styles.songTitle}>{currentSong.name}</div>
+        <div className={styles.songArtist}>{currentSong.artist}</div>
+      </div>
+      <div className={styles.albumArtContainer}>
+        <img src={`https://cms.samespace.com/assets/${currentSong.cover}`} alt={currentSong.name} className={styles.albumArt} />
+      </div>
+
+      <div className={styles.seekerContainer}>
+        <input
+          type="range"
+          min="0"
+          max={duration}
+          value={currentTime}
+          onChange={handleSeek}
+          className={styles.seeker}
+        />
+        <div className={styles.timeInfo}>
+          <span>{formatTime(currentTime)}</span>
+          <span>{formatTime(duration)}</span>
+        </div>
+        <div className={styles.controls}>
+          <div>
+            <img src={dot} alt="dot" />
+          </div>
+          <div className={styles.icns}>
+            <img src={pre} alt="Previous" className={styles.controlIcon} onClick={onPrevious} />
+            {isPlaying ? (
+              <img src={pause} alt="Pause" className={styles.controlIcon} onClick={handlePlayPause} />
+            ) : (
+              <img src={play} alt="Play" className={styles.controlIcon} onClick={handlePlayPause} />
+            )}
+            <img src={next} alt="Next" className={styles.controlIcon} onClick={onNext} />
+          </div>
+          <div>
+            <img
+              src={sound}
+              alt="Sound"
+              onClick={handleMute}
+              className={styles.soundIcon}
             />
-            <div className={styles.timeInfo}>
-              <span>{formatTime(currentTime)}</span>
-            </div>
-            <div className={styles.controls}>
-            <div>
-              <img src={dot} alt="dot" />
-            </div>
-            <div className={styles.icns}>
-              <img src={pre} alt="Previous" className={styles.controlIcon} onClick={handlePrevious} />
-              {isPlaying ? (
-                <img src={pause} alt="Pause" className={styles.controlIcon} onClick={handlePlayPause} />
-              ) : (
-                <img src={play} alt="Play" className={styles.controlIcon} onClick={handlePlayPause} />
-              )}
-              <img src={next} alt="Next" className={styles.controlIcon} onClick={handleNext} />
-            </div>
-            <div>
-              <img
-                src={isMuted ? sound : sound}
-                alt="Sound"
-                onClick={handleMute}
-                className={styles.soundIcon}
-              />
-            </div>
           </div>
-          </div>
-          
-          <audio ref={audioRef} src={currentSong.url} />
-        </>
-      ) : (
+        </div>
+      </div>
+    </>
+  );
+
+  if (!currentSong) {
+    return (
+      <div className={styles.playerContainer}>
         <p>Select a song to play</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className={`${styles.playerContainer} ${isSmallScreen && isExpanded ? styles.expanded : ''}`}>
+      {isSmallScreen ? (
+        isExpanded ? (
+          <div className={styles.expandedPlayer}>
+            <button className={styles.closeButton} onClick={() => setIsExpanded(false)}>×</button>
+            {renderPlayerContent()}
+          </div>
+        ) : (
+          <div className={styles.compactPlayer} onClick={handleCompactClick}>
+            <div className={styles.compactInfo}>
+              <div className={styles.songTitle}>{currentSong.name}</div>
+              <div className={styles.songArtist}>{currentSong.artist}</div>
+            </div>
+            <div className={styles.compactControls}>
+              <img src={pre} alt="Previous" onClick={(e) => handleControlClick(e, onPrevious)} />
+              {isPlaying ? (
+                <img src={pause} alt="Pause" onClick={(e) => handleControlClick(e, handlePlayPause)} />
+              ) : (
+                <img src={play} alt="Play" onClick={(e) => handleControlClick(e, handlePlayPause)} />
+              )}
+              <img src={next} alt="Next" onClick={(e) => handleControlClick(e, onNext)} />
+            </div>
+          </div>
+        )
+      ) : (
+        renderPlayerContent()
       )}
+      <audio ref={audioRef} src={currentSong.url} preload="auto" />
     </div>
   );
 };
