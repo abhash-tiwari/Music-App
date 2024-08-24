@@ -152,12 +152,12 @@ const MusicPlayer = ({ currentSong, appContainerRef, onNext, onPrevious }) => {
             <img src={next} alt="Next" className={styles.controlIcon} onClick={onNext} />
           </div>
           <div>
-            <img
-              src={sound}
-              alt="Sound"
-              onClick={handleMute}
-              className={styles.soundIcon}
-            />
+          <img
+            src={isMuted ? sound : sound}
+            alt={isMuted ? "Unmute" : "Mute"}
+            onClick={handleMute}
+            className={styles.soundIcon}
+          />
           </div>
         </div>
       </div>
