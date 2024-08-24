@@ -20,7 +20,7 @@
     margin-bottom: 20px;
   }
   .albumArtContainer img{
-    width: 380px;
+   width: 380px;
    height: 380px;
    gap: 0px;
    border-radius: 8px;
@@ -53,13 +53,11 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
-    
   }
   
   .seeker {
     width: 100%;
     cursor: pointer;
-    /* appearance: none; */
     accent-color: white;
     background-color: rgb(53, 60, 60);
     border-radius: 5px;
@@ -67,19 +65,7 @@
     outline: none;
     position: relative;
   }
-  
-  /* .seeker::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background-color: #fff;;
-    background: white;
-    border-radius: 5px;
-    z-index: 1;
-  } */
-  
+
   .seeker::-webkit-slider-thumb {
     appearance: none;
     width: 0;
@@ -122,7 +108,7 @@
 
   @media (max-width: 1024px) {
     .playerContainer {
-      width: 100%;
+      width: 95%;
       height: auto;
       position: fixed;
       top: auto;
@@ -143,6 +129,7 @@
       max-width: 500px;
       margin: 0 auto;
     }
+    
   }
   
   @media (max-width: 768px) {
@@ -181,11 +168,11 @@
   
     .expanded {
       position: fixed;
-      top: 0;
+      top: 220px;
       left: 0;
       right: 0;
       bottom: 0;
-      background: #000;
+      background-color: #343030;
       z-index: 1000;
       display: flex;
       flex-direction: column;
@@ -216,10 +203,17 @@
       width: 300px;
       height: 300px;
       margin-bottom: 20px;
+      margin-left: 0;
     }
   
     .expanded .albumArt {
       width: 100%;
       height: auto;
     }
+    .expanded .playerContainer{
+      padding: 0;
+      background-color: white;
+    }
   }
+
+ 
