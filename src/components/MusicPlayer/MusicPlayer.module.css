@@ -117,13 +117,10 @@ gap: 32px;
   }
 
 
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     .playerContainer {
       width: 100%;
       height: auto;
-      /* display: flex;
-      flex-direction: column;
-      justify-content: space-between; */
       position: static;
       margin-left: 2rem;
     }
@@ -204,5 +201,52 @@ gap: 32px;
       color: white;
       cursor: pointer;
     }
+  } */
+  
+
+  @media (max-width: 1180px) {
+    .playerContainer {
+      width: 400px;
+      right: 10px;
+    }
+  
+    .albumArtContainer, .seekerContainer, .controls {
+      width: 100%;
+    }
+  
+    
   }
   
+  @media (max-width: 1024px) {
+    .playerContainer {
+      width: 100%;
+      height: auto;
+      position: fixed;
+      top: auto;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.8);
+    }
+  
+    .albumArtContainer {
+      display: none;
+    }
+  
+    .seekerContainer, .controls {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .playerContainer {
+      padding: 0.5rem;
+    }
+  
+    .seekerContainer, .controls {
+      max-width: 300px;
+    }
+  }

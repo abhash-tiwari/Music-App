@@ -22,7 +22,8 @@
   }
   
   @media (max-width: 768px) {
-    .contentContainer {
+    .appContainer {
+      display: flex;
       flex-direction: column;
       gap: 2rem;
     }

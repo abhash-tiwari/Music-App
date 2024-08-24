@@ -8,7 +8,7 @@ import play from '../../assets/Vector (2).png';
 import pause from '../../assets/Frame 32.png';
 import next from '../../assets/Vector (7).png';
 
-const MusicPlayer = ({ currentSong, appContainerRef }) => {
+const MusicPlayer = ({ currentSong, appContainerRef, onNext, onPrevious }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -72,11 +72,15 @@ const MusicPlayer = ({ currentSong, appContainerRef }) => {
   };
 
   const handleNext = () => {
-    console.log('Next song');
+    if (onNext) {
+      onNext();
+    }
   };
 
   const handlePrevious = () => {
-    console.log('Previous song');
+    if (onPrevious) {
+      onPrevious();
+    }
   };
 
   const formatTime = (seconds) => {
