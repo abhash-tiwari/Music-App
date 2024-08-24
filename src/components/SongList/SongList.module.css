@@ -129,14 +129,15 @@
     width: 100%;
     height: auto;
     position: relative;
-    top: 60px;
+    top: 90px;
     left: 0;
     padding: 0 1rem;
   }
 
   .search {
-    width: 100%;
+    width: 55%;
     display: block;
+    margin-top: -10px;
   }
 
   .songListContainer {
@@ -146,7 +147,7 @@
   .hamburgerIcon {
     display: block;
     position: absolute;
-    top: -4rem;
+    top: -3rem;
     left: 2rem;
     z-index: 100;
   }
@@ -163,7 +164,7 @@
 
 @media (max-width: 768px) {
   .Container {
-    top: 80px;
+    top: 70px;
   }
 
   .search {
@@ -180,7 +181,7 @@
     position: fixed;
     left: 0;
     right: 0;
-    top: 120px;
+    top: 140px;
     bottom: 0;
     z-index: 1;
     background: transparent;
@@ -197,7 +198,7 @@
   .hamburgerIcon {
     display: block;
     position: absolute;
-    top: -4rem;
+    top: -3rem;
     left: 2rem;
   }
 }
@@ -254,6 +255,7 @@
     scrollbar-width: none;
     display: block;
     transition: all;
+    margin-top: 40px;
   }
   .songCont {
     display: flex;

@@ -1,9 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import axios from 'axios';
-import Navbar from './components/Navbar/Navbar';
-import SongList from './components/SongList/SongList';
-import MusicPlayer from './components/MusicPlayer/MusicPlayer';
 import styles from './App.module.css';
+
+const Navbar = lazy(() => import('./components/Navbar/Navbar'));
+const SongList = lazy(() => import('./components/SongList/SongList'));
+const MusicPlayer = lazy(() => import('./components/MusicPlayer/MusicPlayer'));
+
+const LoadingFallback = () => <div>Loading Spotify</div>;
 
 function App() {
   const [songs, setSongs] = useState([]);
@@ -43,14 +46,16 @@ function App() {
 
   return (
     <div className={styles.appContainer} ref={appContainerRef}>
-      <Navbar className={styles.Navbar}/>
-      <SongList songs={songs} setCurrentSong={handleSelectSong} />
-      <MusicPlayer 
-        currentSong={currentSong} 
-        appContainerRef={appContainerRef}
-        onNext={handleNext}
-        onPrevious={handlePrevious}
-      />
+      <Suspense fallback={<LoadingFallback />}>
+        <Navbar className={styles.Navbar}/>
+        <SongList songs={songs} setCurrentSong={handleSelectSong} />
+        <MusicPlayer 
+          currentSong={currentSong} 
+          appContainerRef={appContainerRef}
+          onNext={handleNext}
+          onPrevious={handlePrevious}
+        />
+      </Suspense>
     </div>
   );
 }
