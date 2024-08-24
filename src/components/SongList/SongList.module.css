@@ -1,125 +1,118 @@
 .Container {
-    width: 432px;
-    height: 356px;
-    position: relative;
-    top: -53px;;
-    left: 280px;
-    gap: 0px;
-    opacity: 0px;
+  width: 432px;
+  height: 350px;
+  position: relative;
+  top: -80px;
+  left: 200px;
+}
+.header {
+  display: flex;
+  gap: 1rem;
+}
 
-  }
-  .header{
-    display: flex;
-    gap: 2rem;
-  }
- 
-  .search {
-    width: Fixed (400px)px;
-   height: Hug (48px)px; 
-  padding: 8px;
-  gap: 0px;
+.search {
+  width: 420px;
+  height: 48px;
+  margin-bottom: 5px;
   border-radius: 8px;
- justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-  }
-  
-  .search input {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    outline: none;
-    font-size: 16px;
-    color: #fff;
-    background-color: #3c3737;
-  }
-  
-  .search input::placeholder {
-    color: #ccc;
-  }
-  
-  .searchIcon {
-    cursor: pointer;
-    margin-left: -40px;
-    border-radius: 8px;
-    opacity: 0.7;
-  }
-.songListContainer{
-    width: 432px;
-    height: 550px;
-    gap: 0px;
-    overflow-y: scroll;
-    -ms-overflow-style: none; 
-    scrollbar-width: none; 
-    display: block;
+.search input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 16px;
+  color: #fff;
+  background-color: #3c3737;
+}
+
+.search input::placeholder {
+  color: #ccc;
+}
+
+.searchIcon {
+  cursor: pointer;
+  margin-left: -40px;
+  border-radius: 8px;
+}
+.songListContainer {
+  width: 432px;
+  height: 550px;
+  gap: 0px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  display: block;
 }
 .songCont {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 16px;
-    background-color: transparent;
-    border-radius: 1rem;
-    position: relative;
-  }
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px;
+  background-color: transparent;
+  border-radius: 1rem;
+  position: relative;
+}
 .songCont:hover {
-    background-color: #3c3737;
-  }
-  
-  .img {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .textContainer {  
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-transform: capitalize;
-  }
-  
-  .textContainer h2 {
-    margin: 0;
-    font-size: 18px;
-    color: #fff;
-    font-family: Inter;
-font-size: 18px;
-font-weight: 400;
-text-align: left;
+  background-color: #3c3737;
+}
 
-  }
-  .textContainer h2 {
-    margin: 0;
-    font-size: 18px;
-    color: #fff;
-    font-family: Inter;
-font-size: 18px;
-font-weight: 400;
-line-height: 24px;
-text-align: left;
+.img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 
-  }
-  
-  .duration p{
-    position: absolute;
-    top: 0.9rem;
-    right: 0.9rem;
-    font-family: Inter;
-font-size: 18px;
-font-weight: 400;
-line-height: 24px;
-text-align: right;
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-transform: capitalize;
+  font-family: Inter;
+  letter-spacing: 1px;
+}
 
-  }
+.textContainer p {
+  margin: 0;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 400;
+  text-align: left;
+  opacity: 0.8;
+}
+.textContainer h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: left;
+}
 
-  .hamburgerIcon{
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: #fff;
-  }
+.duration p {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: right;
+}
+
+.hamburgerIcon {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #fff;
+}
+
 
   @media (max-width: 768px) {
     .Container {
@@ -146,7 +139,7 @@ text-align: right;
         position: absolute;
         left: 0px;
         z-index: 2;
-        width: 50%;
+        width: 100px;
         height: 100px;
     }
 
@@ -217,16 +210,99 @@ text-align: right;
 .menuOpen .songListContainer {
     display: block;
     position: absolute;
-    left: 0px;
+    left: 20px;
     z-index: 2;
     width: 50%;
     height: 300px;
 }
 
 .menuOpen .img{
+    display: block;
+    width: 50px;
+    height: 50px;
+}
+
+}
+
+@media (max-width:896px) {
+  .Container {
+    width: 100%;
+    height: 100%;
+    position: static;
+    margin-left: 2rem;
+}
+
+.search {
     display: none;
 }
+
+.songListContainer {
+    display: none;
+}
+
+.hamburgerIcon {
+    display: block; 
+}
+
+.menuOpen .songListContainer {
+    display: block;
+    position: absolute;
+    left: 20px;
+    z-index: 2;
+    width: 75%;
+    height: 200px;
+}
+
 .menuOpen .img{
+    display: block;
+    width: 50px;
+    height: 50px;
+}
+
+}
+
+@media (min-width:360px) and (max-width:740px) {
+  .Container {
+    width: 100%;
+    height: 100%;
+    position: static;
+    margin-left: 2rem;
+}
+
+.search {
     display: none;
 }
+
+.songListContainer {
+    display: none;
 }
+
+.hamburgerIcon {
+    display: block; 
+}
+
+.menuOpen .songListContainer {
+    display: block;
+    position: absolute;
+    left: 20px;
+    z-index: 2;
+    width: 10%;
+    height: 0px;
+    width: 80%;
+        height: 108px;
+}
+
+.menuOpen .img{
+    display: block;
+    width: 50px;
+    height: 50px;
+}
+.menuOpen .duration{
+    display: none;
+    width: 50px;
+    height: 50px;
+}
+
+}
+
+

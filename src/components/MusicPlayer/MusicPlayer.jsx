@@ -109,8 +109,7 @@ const MusicPlayer = ({ currentSong, appContainerRef }) => {
             <div className={styles.timeInfo}>
               <span>{formatTime(currentTime)}</span>
             </div>
-          </div>
-          <div className={styles.controls}>
+            <div className={styles.controls}>
             <div>
               <img src={dot} alt="dot" />
             </div>
@@ -132,6 +131,8 @@ const MusicPlayer = ({ currentSong, appContainerRef }) => {
               />
             </div>
           </div>
+          </div>
+          
           <audio ref={audioRef} src={currentSong.url} />
         </>
       ) : (

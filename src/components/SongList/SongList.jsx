@@ -6,7 +6,8 @@ const SongList = ({ songs, setCurrentSong }) => {
   const [durations, setDurations] = useState({});
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredSongs, setFilteredSongs] = useState(songs);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isTopTracksView, setIsTopTracksView] = useState(false);
 
   const getSongDuration = (url, id) => {
     const audio = new Audio(url);
@@ -37,12 +38,24 @@ const SongList = ({ songs, setCurrentSong }) => {
     );
   }, [searchQuery, songs]);
 
+  const topTracks = songs.filter(song => song.top_track);
+
   return (
     <div className={`${styles.Container} ${isMenuOpen ? styles.menuOpen : ''}`}>
       <div className={styles.headerContainer}>
         <h2 className={styles.header}>
-          <span>For You</span>
-          <span style={{ opacity: '0.6' }}>Top Tracks</span>
+          <span 
+            onClick={() => setIsTopTracksView(false)} 
+            style={{ cursor: 'pointer', opacity: isTopTracksView ? '0.6' : '1' }}
+          >
+            For You
+          </span>
+          <span 
+            onClick={() => setIsTopTracksView(true)} 
+            style={{ cursor: 'pointer', opacity: isTopTracksView ? '1' : '0.6' }}
+          >
+            Top Tracks
+          </span>
         </h2>
         <FaBars
           className={styles.hamburgerIcon}
@@ -58,8 +71,9 @@ const SongList = ({ songs, setCurrentSong }) => {
         />
         <FaSearch className={styles.searchIcon} />
       </div>
+
       <div className={styles.songListContainer}>
-        {filteredSongs.map((song) => (
+        {(isTopTracksView ? topTracks : filteredSongs).map((song) => (
           <div
             key={song.id}
             className={styles.songItem}
